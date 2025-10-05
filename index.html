@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Solution - แผนธุรกิจห้องสำหรับสัตว์เลี้ยงอัจฉริยะ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals & Soft Teal -->
+    <!-- Application Structure Plan: The application is designed as a single-page, top-down narrative business plan. This structure guides the user through the core business concept logically, starting from the high-level vision, drilling down into the market problem, our proposed solution, the technology, target audience, and finally the business roadmap. This flow is more persuasive and easier to follow than a static report. Key interactions include scrolling to reveal sections, interactive charts to explore market data, and a clickable diagram to understand the product features. This design was chosen to make a complex business idea digestible, engaging, and professional for potential investors or partners. -->
+    <!-- Visualization & Content Choices: 
+        1. Market Trend Data -> Goal: Compare -> Viz: Combined Bar/Line Chart -> Interaction: Hover for details -> Justification: To visually demonstrate the inverse relationship between declining birth rates and rising pet ownership, which is the core market opportunity. Chart.js is used for its simplicity and responsiveness.
+        2. Product Features -> Goal: Organize/Inform -> Viz: Interactive Diagram (HTML/CSS/JS) -> Interaction: Click on icons to show feature descriptions -> Justification: To explain the 'smart room' concept in an intuitive, spatial way that a list cannot. This avoids complex graphics while being highly interactive.
+        3. Target Audience -> Goal: Inform -> Viz: Donut Chart -> Interaction: Hover for segment percentage -> Justification: To quickly convey the composition of the target market in an easily understandable format. Chart.js is used for consistency.
+        4. Business Milestones -> Goal: Change (over time) -> Viz: Vertical Timeline (HTML/CSS) -> Interaction: Static, visual guide -> Justification: To clearly and simply present the company's future plans and milestones in a chronological format.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #FDFBF8;
+            color: #3f3f46;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s;
+        }
+        .nav-link.active {
+            color: #14B8A6;
+            font-weight: 600;
+        }
+        .feature-icon:hover .feature-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="header" class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-teal-600">
+                    🐾 Pet Solution
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#hero" class="nav-link text-gray-600 hover:text-teal-600">หน้าแรก</a>
+                    <a href="#opportunity" class="nav-link text-gray-600 hover:text-teal-600">โอกาสทางธุรกิจ</a>
+                    <a href="#solution" class="nav-link text-gray-600 hover:text-teal-600">โซลูชันของเรา</a>
+                    <a href="#technology" class="nav-link text-gray-600 hover:text-teal-600">เทคโนโลยี</a>
+                    <a href="#market" class="nav-link text-gray-600 hover:text-teal-600">กลุ่มเป้าหมาย</a>
+                    <a href="#plan" class="nav-link text-gray-600 hover:text-teal-600">แผนธุรกิจ</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="pt-24 md:pt-32 pb-16 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-800 leading-tight">
+                    สร้างสรรค์<span class="text-teal-500">คุณภาพชีวิตที่ดีที่สุด</span><br>สำหรับสมาชิกคนสำคัญของครอบครัว
+                </h1>
+                <p class="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
+                    Pet Solution นำเสนอ "ห้องสำหรับสัตว์เลี้ยงอัจฉริยะ" ที่ใช้เทคโนโลยี AI และ OCR เพื่อดูแลสุขภาพและความปลอดภัยของเพื่อนรักสี่ข้าของคุณตลอด 24 ชั่วโมง เพราะเราเชื่อว่าพวกเขาคือครอบครัว
+                </p>
+                <div class="mt-8">
+                    <a href="#solution" class="bg-teal-500 text-white font-bold py-3 px-8 rounded-full hover:bg-teal-600 transition duration-300">
+                        ดูโซลูชันของเรา
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="opportunity" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">ปัญหาและโอกาสทางธุรกิจ</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">สังคมที่เปลี่ยนแปลงนำมาซึ่งโอกาสใหม่ เมื่อคนมีลูกน้อยลง สัตว์เลี้ยงจึงกลายเป็นศูนย์กลางความรักและความห่วงใยของครอบครัวยุคใหม่</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 text-center mb-12">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-bold text-teal-600">1.27</h3>
+                        <p class="text-gray-500 mt-2">อัตราการเจริญพันธุ์รวม (TFR) ของไทยปี 2566 ต่ำสุดเป็นประวัติการณ์</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-bold text-teal-600">11.4 ล้านตัว</h3>
+                        <p class="text-gray-500 mt-2">จำนวนสัตว์เลี้ยง (สุนัขและแมว) ที่คาดการณ์ในประเทศไทยปี 2569</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-2xl font-bold text-teal-600">4.1 หมื่นล้านบาท</h3>
+                        <p class="text-gray-500 mt-2">มูลค่าตลาดสัตว์เลี้ยงในประเทศไทยปี 2566 และมีแนวโน้มเติบโตต่อเนื่อง</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-center mb-4 text-gray-700">แนวโน้มการเลี้ยงสัตว์สวนทางกับอัตราการเกิด (2559-2568)</h3>
+                     <div class="chart-container">
+                        <canvas id="marketTrendChart"></canvas>
+                    </div>
+                     <p class="text-center text-sm text-gray-500 mt-4">กราฟนี้แสดงให้เห็นถึงโอกาสสำคัญ: ในขณะที่อัตราการเกิดลดลงอย่างต่อเนื่อง ความต้องการในการเลี้ยงสัตว์กลับเพิ่มสูงขึ้น สะท้อนถึงเทรนด์ "Pet Humanization" ที่ผู้คนพร้อมทุ่มเทเพื่อสัตว์เลี้ยงเสมือนสมาชิกในครอบครัว</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Pet Solution: ห้องอัจฉริยะเพื่อเพื่อนรักของคุณ</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">เราไม่ได้แค่สร้างห้อง แต่เราสร้างพื้นที่ปลอดภัยอัจฉริยะที่เต็มไปด้วยความรักและความเอาใจใส่ผ่านเทคโนโลยีล้ำสมัย</p>
+                </div>
+                <div class="max-w-4xl mx-auto bg-gray-50 p-8 rounded-2xl border border-gray-200 relative">
+                    <div class="aspect-w-16 aspect-h-9 bg-teal-50 rounded-lg flex items-center justify-center relative">
+                        <p class="text-teal-400 font-bold text-lg">Smart Pet Room Layout</p>
+
+                        <div class="feature-icon absolute top-1/4 left-1/4 cursor-pointer" data-feature="camera">
+                            <span class="text-3xl">📹</span>
+                            <div class="feature-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-xs rounded py-2 px-3 opacity-0 visibility-hidden transition-opacity duration-300">
+                                <h4 class="font-bold">กล้อง AI (OCR Tech)</h4>
+                                <p>วิเคราะห์ท่าทาง, การเคลื่อนไหว, และพฤติกรรมผิดปกติ</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-icon absolute bottom-1/4 right-1/4 cursor-pointer" data-feature="bed">
+                            <span class="text-3xl">🐾</span>
+                             <div class="feature-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-xs rounded py-2 px-3 opacity-0 visibility-hidden transition-opacity duration-300">
+                                <h4 class="font-bold">ที่นอนตรวจสุขภาพ</h4>
+                                <p>วัดอัตราการเต้นของหัวใจ, การหายใจ, และคุณภาพการนอน</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-icon absolute top-1/3 right-1/4 cursor-pointer" data-feature="thermo">
+                             <span class="text-3xl">🌡️</span>
+                            <div class="feature-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-xs rounded py-2 px-3 opacity-0 visibility-hidden transition-opacity duration-300">
+                                <h4 class="font-bold">ระบบควบคุมอุณหภูมิ</h4>
+                                <p>ปรับอากาศอัตโนมัติให้เหมาะสมกับสายพันธุ์และสุขภาพ</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-icon absolute bottom-1/3 left-1/3 cursor-pointer" data-feature="food">
+                             <span class="text-3xl">🍲</span>
+                            <div class="feature-tooltip absolute bottom-full mb-2 w-48 bg-gray-800 text-white text-xs rounded py-2 px-3 opacity-0 visibility-hidden transition-opacity duration-300">
+                                <h4 class="font-bold">เครื่องให้อาหาร/น้ำ</h4>
+                                <p>บันทึกปริมาณการกินและดื่ม แจ้งเตือนเมื่อผิดปกติ</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="feature-description" class="mt-6 p-6 bg-teal-50 rounded-lg min-h-[120px]">
+                        <h3 id="feature-title" class="text-lg font-bold text-teal-700">สำรวจห้องของเรา</h3>
+                        <p id="feature-text" class="text-gray-600 mt-2">คลิกที่ไอคอนต่างๆ บนแผนผังเพื่อดูรายละเอียดของแต่ละฟีเจอร์</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="technology" class="py-20">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">เทคโนโลยีเบื้องหลังความห่วงใย</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">เราผสานเทคโนโลยี AI และ OCR เพื่อสร้างระบบดูแลสัตว์เลี้ยงที่ชาญฉลาดและแม่นยำที่สุด</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                        <div class="text-4xl mb-4">🏃‍♂️</div>
+                        <h3 class="text-xl font-bold text-gray-800">การเคลื่อนไหว</h3>
+                        <p class="mt-2 text-gray-600">วิเคราะห์รูปแบบการเดิน, วิ่ง, การเล่น เพื่อตรวจจับความผิดปกติของข้อต่อและกล้ามเนื้อ แจ้งเตือนเมื่อมีอาการซึมหรือกระวนกระวาย</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                        <div class="text-4xl mb-4">❤️</div>
+                        <h3 class="text-xl font-bold text-gray-800">สุขภาพ</h3>
+                        <p class="mt-2 text-gray-600">ติดตามอัตราการเต้นของหัวใจ, การหายใจ, และอุณหภูมิร่างกาย สรุปผลเป็นรายงานสุขภาพรายวัน/รายสัปดาห์ส่งตรงถึงมือคุณ</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                        <div class="text-4xl mb-4">☀️</div>
+                        <h3 class="text-xl font-bold text-gray-800">สภาพแวดล้อม</h3>
+                        <p class="mt-2 text-gray-600">เซ็นเซอร์วัดอุณหภูมิและความชื้น พร้อมระบบปรับอากาศอัตโนมัติ เพื่อสร้างสภาวะที่สบายและปลอดภัยที่สุดสำหรับสัตว์เลี้ยงของคุณ</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-xl shadow-md text-center">
+                        <div class="text-4xl mb-4">💬</div>
+                        <h3 class="text-xl font-bold text-gray-800">ปฏิกิริยาและพฤติกรรม</h3>
+                        <p class="mt-2 text-gray-600">เรียนรู้และจดจำพฤติกรรมปกติของสัตว์เลี้ยงแต่ละตัว และแจ้งเตือนทันทีเมื่อตรวจพบความเปลี่ยนแปลงที่อาจเป็นสัญญาณของปัญหาสุขภาพ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="market" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">กลุ่มลูกค้าเป้าหมายของเรา</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">เรามุ่งเน้นไปที่กลุ่ม "Pet Parents" ผู้ที่รักและใส่ใจสัตว์เลี้ยงเหมือนสมาชิกในครอบครัว</p>
+                </div>
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="md:w-1/2">
+                        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                             <h3 class="text-2xl font-bold text-gray-800 mb-4">The "Pet Parent" Persona</h3>
+                             <p class="mb-2"><strong>อายุ:</strong> 28-45 ปี</p>
+                             <p class="mb-2"><strong>สถานะ:</strong> โสด หรือ DINKs (Double Income, No Kids)</p>
+                             <p class="mb-2"><strong>อาชีพ:</strong> พนักงานออฟฟิศ, เจ้าของธุรกิจ, ฟรีแลนซ์</p>
+                             <p class="mb-2"><strong>ที่พัก:</strong> คอนโดมิเนียม หรือบ้านในเมือง</p>
+                             <p class="mb-4"><strong>พฤติกรรม:</strong>
+                                <ul class="list-disc list-inside text-gray-600">
+                                    <li>ใช้เวลาส่วนใหญ่นอกบ้าน แต่กังวลเรื่องสัตว์เลี้ยง</li>
+                                    <li>มองหาสินค้าและบริการพรีเมียมเพื่อสัตว์เลี้ยง</li>
+                                    <li>มีความรู้และเปิดรับเทคโนโลยีใหม่ๆ</li>
+                                    <li>ติดตามข่าวสารในกลุ่มคนรักสัตว์เลี้ยงออนไลน์</li>
+                                </ul>
+                             </p>
+                             <p class="mt-4 font-semibold text-teal-700">Pain Point: "รู้สึกผิดและกังวลที่ต้องทิ้งสัตว์เลี้ยงไว้ลำพัง ต้องการความมั่นใจว่าพวกเขาจะปลอดภัยและมีความสุข"</p>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-xl font-bold text-center mb-4 text-gray-700">สัดส่วนกลุ่มเป้าหมาย</h3>
+                        <div class="chart-container" style="height: 350px; max-height: 350px;">
+                           <canvas id="targetAudienceChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-gray-500 mt-4">กลุ่มคนเมืองที่มีรายได้สูงและไม่มีบุตรคือตลาดที่ใหญ่ที่สุดของเรา เนื่องจากมีความพร้อมในการใช้จ่ายและต้องการสิ่งที่ดีที่สุดเพื่อสัตว์เลี้ยง</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="plan" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">แผนการดำเนินธุรกิจ (Roadmap)</h2>
+                    <p class="mt-4 text-gray-600 max-w-2xl mx-auto">ขั้นตอนสู่การเป็นผู้นำด้านเทคโนโลยีเพื่อสัตว์เลี้ยงในเอเชียตะวันออกเฉียงใต้</p>
+                </div>
+                <div class="max-w-2xl mx-auto">
+                    <div class="relative">
+                        <div class="border-l-2 border-teal-500 absolute h-full top-0 left-4"></div>
+                        
+                        <div class="mb-8 flex items-center w-full">
+                            <div class="bg-teal-500 rounded-full h-8 w-8 z-10 flex items-center justify-center text-white font-bold">1</div>
+                            <div class="pl-8 flex-1">
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <p class="font-bold text-gray-800">ไตรมาส 4 / 2568: ค้นคว้าและพัฒนา</p>
+                                    <p class="text-gray-600">วิจัยเทคโนโลยี AI/OCR, ออกแบบฮาร์ดแวร์, พัฒนาซอฟต์แวร์ต้นแบบ</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-8 flex items-center w-full">
+                            <div class="bg-teal-500 rounded-full h-8 w-8 z-10 flex items-center justify-center text-white font-bold">2</div>
+                            <div class="pl-8 flex-1">
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <p class="font-bold text-gray-800">ไตรมาส 1 / 2569: สร้างผลิตภัณฑ์ต้นแบบ</p>
+                                    <p class="text-gray-600">ผลิตห้องต้นแบบ (Prototype), ทดสอบกับกลุ่มตัวอย่าง, รับฟังความคิดเห็น</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-8 flex items-center w-full">
+                            <div class="bg-teal-500 rounded-full h-8 w-8 z-10 flex items-center justify-center text-white font-bold">3</div>
+                            <div class="pl-8 flex-1">
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <p class="font-bold text-gray-800">ไตรมาส 3 / 2569: เปิดตัวผลิตภัณฑ์</p>
+                                    <p class="text-gray-600">เปิดตัวอย่างเป็นทางการ, ทำการตลาดออนไลน์, ร่วมมือกับคลินิกสัตว์แพทย์</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center w-full">
+                            <div class="bg-teal-500 rounded-full h-8 w-8 z-10 flex items-center justify-center text-white font-bold">4</div>
+                            <div class="pl-8 flex-1">
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <p class="font-bold text-gray-800">2570 เป็นต้นไป: ขยายตลาด</p>
+                                    <p class="text-gray-600">เพิ่มฟีเจอร์ใหม่ๆ, พัฒนาผลิตภัณฑ์สำหรับสัตว์เลี้ยงประเภทอื่น, ขยายสู่ตลาดต่างประเทศ</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>🐾 Pet Solution &copy; 2025</p>
+            <p class="text-sm text-gray-400 mt-2">เปลี่ยนความรักให้เป็นการดูแลที่ดีที่สุด</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const featureData = {
+                camera: {
+                    title: "กล้อง AI อัจฉริยะ (OCR Technology)",
+                    text: "หัวใจของระบบเราคือกล้องที่มาพร้อมเทคโนโลยี AI และ OCR ที่สามารถวิเคราะห์ท่าทาง การเคลื่อนไหว และพฤติกรรมของสัตว์เลี้ยงได้แบบเรียลไทม์ สามารถตรวจจับความผิดปกติ เช่น การเดินผิดปกติ อาการซึม หรือพฤติกรรมที่เปลี่ยนไป ซึ่งอาจเป็นสัญญาณเริ่มต้นของปัญหาสุขภาพ"
+                },
+                bed: {
+                    title: "ที่นอนตรวจวัดสุขภาพอัจฉริยะ",
+                    text: "ที่นอนไม่ได้เป็นเพียงที่พักผ่อน แต่ยังติดตั้งเซ็นเซอร์เพื่อตรวจวัดชีพจร อัตราการหายใจ และติดตามคุณภาพการนอนของสัตว์เลี้ยง ข้อมูลทั้งหมดจะถูกรวบรวมและวิเคราะห์เพื่อสร้างรายงานสุขภาพส่วนตัว"
+                },
+                thermo: {
+                    title: "ระบบควบคุมอุณหภูมิและความชื้นอัตโนมัติ",
+                    text: "รักษาสภาพแวดล้อมภายในห้องให้เหมาะสมที่สุดสำหรับสัตว์เลี้ยงของคุณ ระบบจะปรับอุณหภูมิและความชื้นอัตโนมัติตามสายพันธุ์และสภาวะสุขภาพของสัตว์เลี้ยง เพื่อให้พวกเขาสบายตัวและแข็งแรงอยู่เสมอ"
+                },
+                food: {
+                    title: "เครื่องให้อาหารและน้ำอัจฉริยะ",
+                    text: "ไม่เพียงแค่จ่ายอาหารและน้ำตามเวลาที่กำหนด แต่ยังบันทึกปริมาณการกินและดื่มในแต่ละวัน ระบบจะแจ้งเตือนทันทีหากพบว่าสัตว์เลี้ยงของคุณกินหรือดื่มน้อยหรือมากผิดปกติ"
+                }
+            };
+            
+            const featureIcons = document.querySelectorAll('.feature-icon');
+            const featureTitle = document.getElementById('feature-title');
+            const featureText = document.getElementById('feature-text');
+
+            featureIcons.forEach(icon => {
+                icon.addEventListener('click', () => {
+                    const featureKey = icon.dataset.feature;
+                    featureTitle.textContent = featureData[featureKey].title;
+                    featureText.textContent = featureData[featureKey].text;
+                });
+            });
+
+
+            const marketTrendCtx = document.getElementById('marketTrendChart').getContext('2d');
+            if(marketTrendCtx) {
+                new Chart(marketTrendCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['2559', '2560', '2561', '2562', '2563', '2564', '2565', '2566', '2567*', '2568*'],
+                        datasets: [
+                            {
+                                type: 'line',
+                                label: 'อัตราการเกิด (ต่อประชากร 1,000 คน)',
+                                data: [10.7, 10.3, 9.9, 9.4, 8.9, 8.5, 8.1, 7.8, 7.5, 7.2],
+                                borderColor: 'rgb(249, 115, 22)',
+                                backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                                yAxisID: 'y1',
+                                tension: 0.3,
+                            },
+                            {
+                                type: 'bar',
+                                label: 'จำนวนสัตว์เลี้ยง (ล้านตัว)',
+                                data: [8.9, 9.2, 9.5, 9.8, 10.1, 10.4, 10.7, 11.0, 11.2, 11.4],
+                                backgroundColor: 'rgb(20, 184, 166)',
+                                yAxisID: 'y',
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                position: 'left',
+                                title: { display: true, text: 'จำนวนสัตว์เลี้ยง (ล้านตัว)' }
+                            },
+                            y1: {
+                                beginAtZero: true,
+                                position: 'right',
+                                title: { display: true, text: 'อัตราการเกิด (ต่อ 1,000 คน)' },
+                                grid: { drawOnChartArea: false }
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+
+            const targetAudienceCtx = document.getElementById('targetAudienceChart').getContext('2d');
+            if(targetAudienceCtx) {
+                new Chart(targetAudienceCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['คนเมือง รายได้สูง (ไม่มีบุตร)', 'ครอบครัวในเมือง (มีบุตร)', 'ผู้สูงอายุ', 'อื่นๆ'],
+                        datasets: [{
+                            label: 'สัดส่วนกลุ่มเป้าหมาย',
+                            data: [55, 25, 15, 5],
+                            backgroundColor: [
+                                'rgb(20, 184, 166)',
+                                'rgb(107, 114, 128)',
+                                'rgb(249, 115, 22)',
+                                'rgb(229, 231, 235)'
+                            ],
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                            }
+                        }
+                    }
+                });
+            }
+
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
