@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สรุปข้อมูลวัสดุที่ปลอดภัยสำหรับสัตว์เลี้ยง</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f8fafc;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .best-choice {
+            border: 2px solid #10b981;
+        }
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        .tag-safe { background-color: #d1fae5; color: #065f46; }
+        .tag-value { background-color: #cffafe; color: #0e7490; }
+        .tag-cost { background-color: #fee2e2; color: #991b1b; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-5xl font-bold text-emerald-600">Pet-Friendly Material Guide</h1>
+            <p class="mt-4 text-lg text-gray-600">สรุปข้อมูลวัสดุที่เหมาะสมเพื่อ "เพื่อนสี่ขา" เปรียบเทียบความปลอดภัย คุณค่า และความคุ้มค่า</p>
+        </header>
+
+        <!-- Flooring Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 border-l-4 border-emerald-500 pl-4">🧱 1. วัสดุปูพื้น (Flooring)</h2>
+            <p class="mb-6 text-gray-600">พื้นเป็นส่วนที่สัตว์เลี้ยงสัมผัสตลอดเวลา มีผลโดยตรงต่อสุขภาพข้อต่อและความสะอาดโดยรวม</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- SPC Flooring -->
+                <div class="card p-6 best-choice">
+                    <h3 class="text-xl font-bold mb-3">🏆 พื้น SPC (Stone Plastic Composite)</h3>
+                    <p class="text-sm text-gray-500 mb-4">ตัวเลือกที่คุ้มค่าที่สุดในระยะยาว แข็งแรงทนทานสูง</p>
+                    <div>
+                        <p class="mb-2"><span class="tag tag-safe">🛡️ ความปลอดภัย</span> <strong class="text-emerald-700">สูงสุด:</strong> ได้รับรอง GREENGUARD Gold (VOCs ต่ำ), พื้นผิวไม่ลื่น ช่วยลดความเสี่ยงโรคข้อต่อ</p>
+                        <p class="mb-2"><span class="tag tag-cost">💰 ความคุ้มค่า</span> <strong class="text-red-700">ปานกลาง-สูง:</strong> 470 - 1,100 บาท/ตร.ม. (รวมติดตั้ง)</p>
+                        <p class="mb-2"><span class="tag tag-value">🌟 คุณค่า</span> <strong class="text-cyan-700">ยอดเยี่ยม:</strong> ทนทานสูงสุดต่อแรงกระแทกและความชื้น, ปลอดภัยต่อระบบทางเดินหายใจ, ดูแลรักษาง่ายมาก</p>
+                    </div>
+                </div>
+
+                <!-- LVT Flooring -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold mb-3">พื้น LVT (Luxury Vinyl Tile)</h3>
+                    <p class="text-sm text-gray-500 mb-4">ให้สัมผัสที่นุ่มนวลและยืดหยุ่นกว่า SPC</p>
+                    <div>
+                        <p class="mb-2"><span class="tag tag-safe">🛡️ ความปลอดภัย</span> <strong class="text-emerald-700">สูง:</strong> ได้รับรอง GREENGUARD Gold, มีความยืดหยุ่นสูง</p>
+                        <p class="mb-2"><span class="tag tag-cost">💰 ความคุ้มค่า</span> <strong class="text-red-700">ปานกลาง:</strong> 430 - 1,050 บาท/ตร.ม. (รวมติดตั้ง)</p>
+                        <p class="mb-2"><span class="tag tag-value">🌟 คุณค่า</span> <strong class="text-cyan-700">ดีมาก:</strong> ให้สัมผัสสบายเท้า, ปลอดภัย, กันน้ำได้ 100%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Walls & Furniture Section -->
+        <section>
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 border-l-4 border-emerald-500 pl-4">🎨 2. วัสดุผนังและเฟอร์นิเจอร์ (Walls & Furniture)</h2>
+            <p class="mb-6 text-gray-600">สำคัญอย่างยิ่งเพราะสัตว์เลี้ยงอาจเลียหรือขีดข่วนพื้นผิวเหล่านี้ได้</p>
+
+            <div class="space-y-8">
+                <!-- Paint -->
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold mb-3">สีทาภายใน (Paint)</h3>
+                    <p class="text-sm text-gray-500 mb-4">เลือกใช้สีปลอดสารพิษเพื่ออากาศภายในที่สะอาด</p>
+                     <div>
+                        <p class="mb-2"><span class="tag tag-safe">🛡️ ความปลอดภัย</span> <strong class="text-emerald-700">สูงสุด:</strong> เลือกสีที่ได้รับรอง <strong class="font-semibold">GREENGUARD Gold</strong> หรือระบุว่าเป็น <strong class="font-semibold">"Zero VOCs"</strong></p>
+                        <p class="mb-2"><span class="tag tag-cost">💰 ความคุ้มค่า</span> <strong class="text-red-700">สูงกว่าสีทั่วไป 15-20%</strong> แต่คุ้มค่าเพื่อสุขภาพ</p>
+                        <p class="mb-2"><span class="tag tag-value">🌟 คุณค่า</span> <strong class="text-cyan-700">อากาศภายในสะอาด</strong> ปลอดภัยต่อระบบทางเดินหายใจของทั้งคนและสัตว์เลี้ยง</p>
+                    </div>
+                </div>
+
+                <!-- Plywood -->
+                 <div class="card p-6">
+                    <h3 class="text-xl font-bold mb-3">ไม้อัดสำหรับเฟอร์นิเจอร์ (Plywood)</h3>
+                    <p class="text-sm text-gray-500 mb-4">ลดการปล่อยสารฟอร์มาลดีไฮด์ ซึ่งเป็นสารก่อมะเร็ง</p>
+                     <div>
+                        <p class="mb-2"><span class="tag tag-safe">🛡️ ความปลอดภัย</span> <strong class="text-emerald-700">สูงสุด:</strong> เลือกใช้ไม้อัดเกรด <strong class="font-semibold">E0</strong> หรือ <strong class="font-semibold">Formaldehyde-Free</strong></p>
+                        <p class="mb-2"><span class="tag tag-cost">💰 ความคุ้มค่า</span> <strong class="text-red-700">ราคาสูงกว่าไม้อัดปกติ</strong> แต่จำเป็นสำหรับเฟอร์นิเจอร์ในพื้นที่ปิด</p>
+                        <p class="mb-2"><span class="tag tag-value">🌟 คุณค่า</span> <strong class="text-cyan-700">ลดความเสี่ยงโรคร้ายแรง</strong> ทั้งในคนและสัตว์เลี้ยงในระยะยาว</p>
+                    </div>
+                </div>
+
+                <!-- Fabric -->
+                <div class="card p-6 best-choice">
+                     <h3 class="text-xl font-bold mb-3">🏆 ผ้าบุเฟอร์นิเจอร์ (Upholstery)</h3>
+                     <p class="text-sm text-gray-500 mb-4">ลงทุนครั้งเดียวเพื่อความทนทาน, สุขอนามัย และความสวยงามที่ยาวนาน</p>
+                     <div>
+                        <p class="mb-2"><span class="tag tag-safe">🛡️ ความปลอดภัย</span> <strong class="text-emerald-700">สูงสุด:</strong> เลือกใช้ผ้าแบรนด์ <strong class="font-semibold">Crypton® / Sunbrella®</strong> ที่มีคุณสมบัติต้านจุลินทรีย์ และ <strong class="font-semibold">PFC-Free</strong></p>
+                        <p class="mb-2"><span class="tag tag-cost">💰 ความคุ้มค่า</span> <strong class="text-red-700">ราคาสูงในตอนแรก</strong> แต่คุ้มค่ากว่าในระยะยาวเพราะทนทานมาก</p>
+                        <p class="mb-2"><span class="tag tag-value">🌟 คุณค่า</span> <strong class="text-cyan-700">ยอดเยี่ยม:</strong> ทนต่อรอยขีดข่วน, กันคราบฝังลึก, ไม่สะสมเชื้อโรคและกลิ่น, ทำความสะอาดง่ายมาก</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer class="text-center mt-12 py-6 border-t">
+            <p class="text-gray-500">การลงทุนกับวัสดุคุณภาพสูง คือการลงทุนเพื่อสุขภาพและความสุขของสมาชิกคนสำคัญในครอบครัว</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
